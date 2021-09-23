@@ -15,4 +15,10 @@ export default class Member extends BaseEntity {
       password: this.password,
     };
   }
+  login() {
+    return {
+      username: this.username,
+      password: this.password,
+    };
+  }
 }

@@ -10,4 +10,8 @@ function registerUser(data) {
   return instance.post("/member/insert", data);
 }
 
-export { registerUser };
+function loginUser(data) {
+  return instance.get("/member/login", data);
+}
+
+export { registerUser, loginUser };
