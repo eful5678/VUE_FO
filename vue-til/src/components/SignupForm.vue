@@ -1,26 +1,32 @@
 <template>
-  <div>
-    <div>
-      <label for="username">id: </label>
-      <input id="username" type="text" v-model="member.class.username" />
+  <div class="contents">
+    <div class="form-wrapper form-wrapper-sm">
+      <div class="form">
+        <div>
+          <label for="username">id: </label>
+          <input id="username" type="text" v-model="member.class.username" />
+        </div>
+        <div>
+          <label for="password">pw: </label>
+          <input id="password" type="text" v-model="member.class.password" />
+        </div>
+        <div>
+          <label for="nickname">nickname: </label>
+          <input id="nickname" type="text" v-model="member.class.nickname" />
+        </div>
+        <button
+          class="btn"
+          :disabled="
+            !isUsernameValid || !member.class.password || !member.class.nickname
+          "
+          @click="submitForm"
+        >
+          회원가입
+        </button>
+      </div>
+
+      <p class="log">{{ logMessage }}</p>
     </div>
-    <div>
-      <label for="password">pw: </label>
-      <input id="password" type="text" v-model="member.class.password" />
-    </div>
-    <div>
-      <label for="nickname">nickname: </label>
-      <input id="nickname" type="text" v-model="member.class.nickname" />
-    </div>
-    <button
-      :disabled="
-        !isUsernameValid || !member.class.password || !member.class.nickname
-      "
-      @click="submitForm"
-    >
-      회원가입
-    </button>
-    <p>{{ logMessage }}</p>
   </div>
 </template>
 

@@ -1,20 +1,33 @@
 <template>
-  <div>
-    <div>
-      <label for="username">id: </label>
-      <input id="username" type="text" v-model="member.class.username" />
+  <div class="contents">
+    <div class="form-wrapper form-wrapper-sm">
+      <div class="form">
+        <div>
+          <label for="username">id: </label>
+          <input id="username" type="text" v-model="member.class.username" />
+          <p class="validation-text">
+            <span
+              class="warning"
+              v-if="!isUsernameValid && member.class.username"
+            >
+              Please enter an email address
+            </span>
+          </p>
+        </div>
+        <div>
+          <label for="password">password: </label>
+          <input id="password" type="text" v-model="member.class.password" />
+        </div>
+        <button
+          class="btn"
+          :disabled="!isUsernameValid || !member.class.password"
+          @click="submitForm"
+        >
+          로그인
+        </button>
+      </div>
+      <p class="log">{{ logMessage }}</p>
     </div>
-    <div>
-      <label for="password">password: </label>
-      <input id="password" type="text" v-model="member.class.password" />
-    </div>
-    <button
-      :disabled="!isUsernameValid || !member.class.password"
-      @click="submitForm"
-    >
-      로그인
-    </button>
-    <p>{{ logMessage }}</p>
   </div>
 </template>
 
@@ -43,6 +56,7 @@ export default {
       try {
         console.log(this.member.class.login());
         const response = await loginUser(this.member.class.login());
+        this.$router.push("/main");
         console.log(response);
         console.log(response.data.username);
         this.logMessage = `${response.data.username}님 환영합니다`;
@@ -67,4 +81,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+/* .btn {
+  color: white;
+} */
+</style>
