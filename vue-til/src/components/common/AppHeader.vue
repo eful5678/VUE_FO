@@ -4,17 +4,38 @@
       <router-link to="/" class="logo">Shin-A</router-link>
     </div>
     <div class="navigations">
-      <router-link to="/login">Login</router-link>
-      <router-link to="/signup">Signup</router-link>
+      <template v-if="isUserLogin">
+        <span class="username">{{ $store.state.username }}</span>
+        <a href="javascript:;" @click="logoutUser">Logout</a>
+      </template>
+      <template v-else>
+        <router-link to="/login">Login</router-link>
+        <router-link to="/signup">Signup</router-link>
+      </template>
     </div>
   </header>
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    isUserLogin: function () {
+      return this.$store.getters.isLogin;
+    },
+  },
+  methods: {
+    logoutUser: function () {
+      this.$store.commit("clearUsername");
+      this.$router.push("/");
+    },
+  },
+};
 </script>
 
 <style scoped>
+.username {
+  color: white;
+}
 header {
   display: flex;
   justify-content: space-between;

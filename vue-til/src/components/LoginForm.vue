@@ -56,10 +56,11 @@ export default {
       try {
         console.log(this.member.class.login());
         const response = await loginUser(this.member.class.login());
-        this.$router.push("/main");
         console.log(response);
         console.log(response.data.username);
         this.logMessage = `${response.data.username}님 환영합니다`;
+        this.$store.commit("setUsername", this.member.class.username);
+        this.$router.push("/main");
       } catch (error) {
         console.log(error.response);
         this.logMessage = `${error.response.data.message}`;
