@@ -8,32 +8,61 @@
       <label for="password">password: </label>
       <input id="password" type="text" v-model="member.class.password" />
     </div>
-    <button @click="submitForm">로그인</button>
+    <button
+      :disabled="!isUsernameValid || !member.class.password"
+      @click="submitForm"
+    >
+      로그인
+    </button>
+    <p>{{ logMessage }}</p>
   </div>
 </template>
 
 <script>
 import { Member } from "@/entity";
 import { loginUser } from "@/api/index";
+import { validateEmail } from "@/utils/validation";
 export default {
   data() {
     return {
       member: {
         class: new Member(),
       },
+      logMessage: "",
     };
+  },
+  computed: {
+    isUsernameValid: function () {
+      return validateEmail(this.member.class.username);
+    },
   },
   methods: {
     submitForm: async function () {
       console.log("login");
-      const response = await loginUser({
-        params: {
-          username: this.member.class.username,
-          password: this.member.class.password,
-        },
-      });
-      console.log(response);
+
+      try {
+        console.log(this.member.class.login());
+        const response = await loginUser(this.member.class.login());
+        console.log(response);
+        console.log(response.data.username);
+        this.logMessage = `${response.data.username}님 환영합니다`;
+      } catch (error) {
+        console.log(error.response);
+        this.logMessage = `${error.response.data.message}`;
+      }
     },
+    // submitForm: async function () {
+    //   console.log("login");
+    //   const response = await loginUser({
+    //     params: {
+    //       username: this.member.class.username,
+    //       password: this.member.class.password,
+    //     },
+    //   });
+    //   console.log(response);
+    //   console.log(response.data.username);
+    //   this.logMessage = `${response.data.username}님 환영합니다`;
+    // },
   },
 };
 </script>

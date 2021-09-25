@@ -7,11 +7,11 @@ const instance = axios.create({
 function registerUser(data) {
   // const url = "http://localhost:8090/member/insert";
   // return axios.post(url, data);
-  return instance.post("/member/insert", data);
+  return instance.post("/member/insertV2", data);
 }
 
 function loginUser(data) {
-  return instance.get("/member/login", data);
+  return instance.post("/member/loginV2", data);
 }
 
 export { registerUser, loginUser };
