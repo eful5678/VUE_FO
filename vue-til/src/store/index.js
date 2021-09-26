@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     username: "",
+    token: "",
   },
   getters: {
     isLogin: function (state) {
@@ -18,6 +19,9 @@ export default new Vuex.Store({
     },
     clearUsername: function (state) {
       state.username = "";
+    },
+    setToken: function (state, token) {
+      state.token = token;
     },
   },
 });

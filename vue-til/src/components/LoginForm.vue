@@ -60,6 +60,7 @@ export default {
         console.log(response.data.username);
         this.logMessage = `${response.data.username}님 환영합니다`;
         this.$store.commit("setUsername", this.member.class.username);
+        this.$store.commit("setToken", response.data.token);
         this.$router.push("/main");
       } catch (error) {
         console.log(error.response);
