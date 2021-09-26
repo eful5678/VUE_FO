@@ -21,4 +21,8 @@ function loginUser(data) {
   return instance.post("/member/loginV2", data);
 }
 
-export { registerUser, loginUser };
+function fetchPosts() {
+  return instance.get("/posts/search");
+}
+
+export { registerUser, loginUser, fetchPosts };
