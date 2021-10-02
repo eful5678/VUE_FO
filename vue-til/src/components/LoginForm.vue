@@ -33,8 +33,9 @@
 
 <script>
 import { Member } from "@/entity";
-import { loginUser } from "@/api/index";
+// import { loginUser } from "@/api/index";
 import { validateEmail } from "@/utils/validation";
+
 export default {
   data() {
     return {
@@ -54,14 +55,17 @@ export default {
       console.log("login");
 
       try {
-        console.log(this.member.class.login());
-        const response = await loginUser(this.member.class.login());
-        console.log(response);
-        console.log(response.data.username);
-        this.logMessage = `${response.data.username}님 환영합니다`;
-        this.$store.commit("setUsername", this.member.class.username);
-        this.$store.commit("setToken", response.data.token);
+        const data = await this.$store.dispatch(
+          "LOGIN",
+          this.member.class.login()
+        );
+        // const response = await loginUser(this.member.class.login());
+        // this.$store.commit("setUsername", this.member.class.username);
+        // this.$store.commit("setToken", response.data.token);
+        // saveAuthToCookie(response.data.token);
+        // saveUserToCookie(this.member.class.username);
         this.$router.push("/main");
+        this.logMessage = `${data.username}님 환영합니다`;
       } catch (error) {
         console.log(error.response);
         this.logMessage = `${error.response.data.message}`;
