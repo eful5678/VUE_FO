@@ -2,7 +2,9 @@
   <header>
     <div>
       <router-link to="/" class="logo">Shin-A</router-link>
-      <span v-if="isUserLogin">by {{ $store.state.username }}</span>
+      <span class="username" v-if="isUserLogin">
+        by {{ $store.state.username }}</span
+      >
     </div>
     <div class="navigations">
       <template v-if="isUserLogin">

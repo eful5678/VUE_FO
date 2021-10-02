@@ -2,11 +2,14 @@
   <div>
     <div class="main list-container contents">
       <h1 class="page-header">Main Page</h1>
-      <ul>
-        <li v-for="postItem in postItems" :key="postItem.id">
-          {{ postItem.title }}
-          {{ postItem.contents }}
-        </li>
+      <div v-if="isLoading">Loading...</div>
+      <LoadingSpinner v-if="isLoading"></LoadingSpinner>
+      <ul v-else>
+        <PostListItem
+          v-for="postItem in postItems"
+          :key="postItem.id"
+          :postItem="postItem"
+        ></PostListItem>
       </ul>
     </div>
   </div>
@@ -14,10 +17,17 @@
 
 <script>
 import { fetchPosts } from "@/api/index";
+import PostListItem from "@/components/posts/PostListItem.vue";
+import LoadingSpinner from "@/components/common/LoadingSpinner.vue";
 export default {
+  components: {
+    PostListItem,
+    LoadingSpinner,
+  },
   data() {
     return {
       postItems: [],
+      isLoading: false,
     };
   },
   created() {
@@ -25,7 +35,9 @@ export default {
   },
   methods: {
     fetchNotes: async function () {
+      this.isLoading = true;
       const response = await fetchPosts();
+      this.isLoading = false;
       console.log(response);
       this.postItems = response.data;
     },
