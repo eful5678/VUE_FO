@@ -25,4 +25,8 @@ function fetchPosts() {
   return instance.get("/posts/search");
 }
 
-export { registerUser, loginUser, fetchPosts };
+function createPost(data) {
+  return instance.post("/posts/insert", data);
+}
+
+export { registerUser, loginUser, fetchPosts, createPost };
