@@ -67,8 +67,9 @@ export default {
         this.$router.push("/main");
         this.logMessage = `${data.username}님 환영합니다`;
       } catch (error) {
-        console.log(error.response);
-        this.logMessage = `${error.response.data.message}`;
+        console.log("?>");
+        // console.log(error);
+        // this.logMessage = `${error.response.data.message}`;
       }
     },
     // submitForm: async function () {

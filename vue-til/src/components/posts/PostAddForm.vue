@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { createPost } from "@/api/index";
+import { createPost } from "@/api/posts";
 import { Post, Member } from "@/entity";
 export default {
   data() {
@@ -51,6 +51,7 @@ export default {
       try {
         this.post.class.username = this.$store.state.username;
         const response = await createPost(this.post.class.insert());
+        this.$router.push("/main");
         console.log(response.data);
       } catch (error) {
         console.log(error);

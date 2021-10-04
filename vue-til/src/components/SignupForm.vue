@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { registerUser } from "@/api/index";
+import { registerUser } from "@/api/auth";
 import { Member } from "@/entity";
 import { validateEmail } from "@/utils/validation";
 export default {
@@ -53,6 +53,7 @@ export default {
       console.log("form submit");
       const response = await registerUser(this.member.class.form());
       this.logMessage = `${response.data.username}님이 가입되었습니다.`;
+      this.$router.push("/login");
       console.log(response);
     },
   },
