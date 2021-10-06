@@ -8,6 +8,10 @@ export default class Post extends BaseEntity {
     this.contents = _data.contents || "";
 
     this.username = _data.username || "";
+
+    this.postId = _data.postId || 0;
+
+    this.createDateTime = _data.createDateTime || "";
   }
 
   insert() {
@@ -15,6 +19,13 @@ export default class Post extends BaseEntity {
       title: this.title,
       contents: this.contents,
       username: this.username,
+    };
+  }
+  update() {
+    return {
+      postId: this.postId,
+      title: this.title,
+      contents: this.contents,
     };
   }
 }

@@ -4,6 +4,10 @@ function fetchPosts() {
   return posts.get("/search");
 }
 
+function fetchPost(postId) {
+  return posts.get("/info", postId);
+}
+
 function createPost(data) {
   return posts.post("/insert", data);
 }
@@ -13,4 +17,8 @@ function deletePost(postId) {
   return posts.put(`/delete/${postId}`);
 }
 
-export { fetchPosts, createPost, deletePost };
+function editPost(postData) {
+  return posts.put("/update/", postData);
+}
+
+export { fetchPosts, createPost, deletePost, fetchPost, editPost };
