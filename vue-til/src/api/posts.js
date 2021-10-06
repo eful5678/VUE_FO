@@ -8,4 +8,9 @@ function createPost(data) {
   return posts.post("/insert", data);
 }
 
-export { fetchPosts, createPost };
+function deletePost(postId) {
+  console.log(postId);
+  return posts.put(`/delete/${postId}`);
+}
+
+export { fetchPosts, createPost, deletePost };
