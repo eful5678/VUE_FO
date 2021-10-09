@@ -63,6 +63,7 @@ export default {
       try {
         const response = await editPost(this.post.class.update());
         console.log(response);
+        this.$router.push("/main");
       } catch (error) {
         console.log(error);
         this.logMessage = error;
