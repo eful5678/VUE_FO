@@ -31,6 +31,10 @@ export default new VueRouter({
       component: () => import("@/views/PostEditPage.vue"),
     },
     {
+      path: "/empList",
+      component: () => import("@/views/EmployeeListPage.vue"),
+    },
+    {
       path: "*",
       component: () => import("@/views/PageNotFound.vue"),
     },
