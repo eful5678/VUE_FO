@@ -14,7 +14,7 @@
           </li>
         </ul>
       </div>
-      <router-link to="/" class="logo">Shin-A</router-link>
+      <router-link :to="logoLink" class="logo">Shin-A</router-link>
       <span class="username" v-if="isUserLogin">
         by {{ $store.state.username }}</span
       >
@@ -34,15 +34,22 @@
 </template>
 
 <script>
+import { deleteCookie } from "@/utils/cookies";
 export default {
   computed: {
     isUserLogin: function () {
       return this.$store.getters.isLogin;
     },
+    logoLink: function () {
+      return this.$store.getters.isLogin ? "/main" : "/login";
+    },
   },
   methods: {
     logoutUser: function () {
       this.$store.commit("clearUsername");
+      this.$store.commit("clearToken");
+      deleteCookie("til_auth");
+      deleteCookie("til_user");
       this.$router.push("/");
     },
     toggle: function () {
