@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="root sidebarStatic">
     <AppHeader></AppHeader>
     <LeftMenu></LeftMenu>
     <router-view></router-view>
@@ -21,4 +21,5 @@ export default {
 @import "./css/reset.css";
 @import "./css/common.css";
 @import "./css/grid.css";
+@import "./css/dynamic.css";
 </style>
