@@ -4,7 +4,7 @@
       <div class="col">
         <div class="button-right">
           <button>검색</button>
-          <button @click="createEmp">직원등록</button>
+          <button @click="createEmpBind">직원등록</button>
         </div>
       </div>
     </div>
@@ -34,8 +34,8 @@
                     <td>
                       <a href="">{{ Employee.name }}</a>
                     </td>
-                    <td>아직</td>
-                    <td>아직</td>
+                    <td>{{ Employee.empLevel }}</td>
+                    <td>{{ Employee.entryDate || "구현필요" }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -76,7 +76,7 @@ export default {
         console.log(error);
       }
     },
-    createEmp: function () {
+    createEmpBind: function () {
       this.$router.push("/empRegist");
     },
   },

@@ -35,6 +35,10 @@ export default new VueRouter({
       component: () => import("@/views/EmployeeListPage.vue"),
     },
     {
+      path: "/empRegist",
+      component: () => import("@/views/EmployeeRegistPage.vue"),
+    },
+    {
       path: "*",
       component: () => import("@/views/PageNotFound.vue"),
     },
