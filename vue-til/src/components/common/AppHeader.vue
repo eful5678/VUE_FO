@@ -1,6 +1,19 @@
 <template>
   <header>
     <div>
+      <div>
+        <ul>
+          <li>
+            <a
+              style="cursor: pointer"
+              target="_self"
+              class="left_a"
+              @click="toggle"
+              ><span>Menu</span></a
+            >
+          </li>
+        </ul>
+      </div>
       <router-link to="/" class="logo">Shin-A</router-link>
       <span class="username" v-if="isUserLogin">
         by {{ $store.state.username }}</span
@@ -32,11 +45,42 @@ export default {
       this.$store.commit("clearUsername");
       this.$router.push("/");
     },
+    toggle: function () {
+      console.log("side");
+      const el = document.querySelector(".root");
+      console.log(el);
+      if (el.classList.contains("sidebarStatic")) {
+        el.classList.remove("sidebarStatic");
+        el.classList.add("sidebarClose");
+        console.log(el);
+      } else {
+        el.classList.add("sidebarStatic");
+        el.classList.remove("sidebarClose");
+        console.log(el);
+      }
+    },
   },
 };
 </script>
 
 <style scoped>
+.app-header {
+  position: fixed;
+  top: 0;
+  width: calc(100% -50px);
+}
+.app-header.navbar {
+  height: 60px;
+  z-index: 100;
+  -webkit-box-shadow: 0 15px 20px -20px rgba(75, 102, 171, 0.1),
+    0 0 15px rgba(75, 102, 171, 0.06);
+  box-shadow: 0 15px 20px -20px;
+  -webkey-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
 .username {
   color: white;
 }

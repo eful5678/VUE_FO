@@ -1,14 +1,17 @@
 <template>
-  <div class="left">
-    <nav class="left_nav">
-      <h1>Menu</h1>
-      <ul>
-        <li style="cursor: pointer">
-          <a @click="employeeListBind">Employee List</a>
-        </li>
-        <li>Salary</li>
-      </ul>
-    </nav>
+  <div>
+    <div class="sidebar-wrapper">
+      <!-- <strong class="logo">Menu</strong> -->
+      <nav class="sidebar">
+        <ul>
+          <li style="cursor: pointer">
+            <a @click="employeeListBind">직원목록</a>
+          </li>
+          <li>급여 관리</li>
+          <li>컨테이너 관리</li>
+        </ul>
+      </nav>
+    </div>
   </div>
 </template>
 
@@ -22,23 +25,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.left {
-  width: 250px;
-  position: inherit;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  transition: width 0.2s;
-}
-.left_nav {
-  position: absolute;
-  width: 250px;
-  height: 100%;
-  background-color: beige;
-  z-index: 110;
-  padding: 10px;
-}
-</style>
+<style scoped></style>
