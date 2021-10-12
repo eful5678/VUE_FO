@@ -26,6 +26,7 @@
                     <th>이름</th>
                     <th>직급</th>
                     <th>입사일</th>
+                    <th>근무지</th>
                   </tr>
                   <tr v-for="Employee in Employees" :key="Employee.id">
                     <td>
@@ -36,6 +37,7 @@
                     </td>
                     <td>{{ Employee.empLevel }}</td>
                     <td>{{ Employee.entryDate || "구현필요" }}</td>
+                    <td>어디</td>
                   </tr>
                 </tbody>
               </table>
