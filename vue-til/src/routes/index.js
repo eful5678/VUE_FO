@@ -55,6 +55,10 @@ const router = new VueRouter({
       },
     },
     {
+      path: "/repairList",
+      component: () => import("@/views/RepairListPage.vue"),
+    },
+    {
       path: "*",
       component: () => import("@/views/PageNotFound.vue"),
     },
