@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { RepairList } from "@/components/container/RepairList.vue";
+import RepairList from "@/components/container/RepairList.vue";
 export default {
   components: {
     RepairList,
