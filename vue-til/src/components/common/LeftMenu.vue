@@ -8,7 +8,9 @@
             <a @click="employeeListBind">직원목록</a>
           </li>
           <li>급여 관리</li>
-          <li>컨테이너 관리</li>
+          <li style="cursor: pointer">
+            <a @click="containerListBind">컨테이너 관리</a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -20,6 +22,9 @@ export default {
   methods: {
     employeeListBind: function () {
       this.$router.push("/empList");
+    },
+    containerListBind: function () {
+      this.$router.push("/repairList");
     },
   },
 };
