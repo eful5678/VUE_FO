@@ -4,4 +4,8 @@ function repairList(data) {
   return repair.get("/list", data);
 }
 
-export { repairList };
+function insertContainer(data) {
+  return repair.post("/insert", data);
+}
+
+export { repairList, insertContainer };
